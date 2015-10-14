@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A colourful explosion</title>
+  <meta name="description" content="Rainbows, rainbows everywhere!">
+  <meta name="author" content="Simonas Jončys <simonasjoncys@gmail.com>">
+  <style media="screen">
+    .wrapper {
+      background-color: #F7F7F7;
+      width: 720px;
+      height: 405px;
+      margin: 40px auto 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <canvas id="stage" width="720" height="405"></canvas>
+  </div>
+  <<script type="text/javascript" src="../lib/unvrs.js"></script>
+  <script>
+    var stage = document.getElementById('stage');
+    var context = stage.getContext('2d');
+    var drawParticle = function(particle) {
+      context.beginPath();
+      context.arc(particle.x, particle.y, particle.radius, 0, 2 * Math.PI, false);
+      context.fillStyle = particle.color;
+      context.fill();
+    };
+    var particles = [];
+    for (var i = 0; i < 50; i++) {
+      particles.push(unvrs.createParticle(360, 203));
+    }
+    var tick = function() {
+      context.clearRect(0, 0, 720, 405);
+      for (var i = 0; i < particles.length; i++) {
+        var particle = particles[i];
+        particle.tick();
+        drawParticle(particle);
+      }
+      window.requestAnimationFrame(tick);
+    }
+    window.requestAnimationFrame(tick);
+  </script>
+</body>
+</html>

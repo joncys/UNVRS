@@ -1,0 +1,29 @@
+{
+  "name": "unvrs",
+  "version": "0.0.1",
+  "description": "A particle engine I've always wanted to write.",
+  "main": "index.js",
+  "scripts": {
+    "examples": "http-server .",
+    "package": "mkdir -p lib && browserify index.js --standalone unvrs > lib/unvrs.js",
+    "prepublish": "npm run package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joncys/unvrs.git"
+  },
+  "keywords": [
+    "particle",
+    "engine"
+  ],
+  "author": "Simonas Jončys <simonasjoncys@gmail.com> (http://www.joncys.lt/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joncys/unvrs/issues"
+  },
+  "homepage": "https://github.com/joncys/unvrs#readme",
+  "devDependencies": {
+    "browserify": "^11.2.0",
+    "http-server": "^0.8.5"
+  }
+}
