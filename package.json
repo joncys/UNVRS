@@ -1,6 +1,6 @@
 {
   "name": "unvrs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A particle engine I've always wanted to write.",
   "main": "lib/index.js",
   "scripts": {
