@@ -1,5 +1,5 @@
-var test = require('tape');
-var createParticle = require('../src/index.js').createParticle;
+import test from 'tape';
+import { createParticle } from '../src/index';
 
 test('first test', function(t) {
   t.plan(2);

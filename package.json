@@ -2,14 +2,15 @@
   "name": "unvrs",
   "version": "0.0.1",
   "description": "A particle engine I've always wanted to write.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "examples": "http-server .",
     "lint": "eslint src/**",
-    "package": "mkdir -p lib && browserify src/index.js --standalone unvrs > lib/unvrs.js",
-    "test": "tape test/**/*.spec.js | faucet",
+    "transpile": "babel src --out-dir lib",
+    "package": "mkdir -p dist && browserify lib/index.js --standalone unvrs > dist/unvrs.js",
+    "test": "babel-tape-runner test/**/*.spec.js | faucet",
     "dev": "chokidar --initial \"src/**/*.js\" \"test/**/*.js\" -c \"npm run lint -s && npm run test -s\"",
-    "prepublish": "npm run package"
+    "prepublish": "npm run transpile && npm run package"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   },
   "homepage": "https://github.com/joncys/unvrs#readme",
   "devDependencies": {
+    "babel-tape-runner": "^1.2.0",
     "browserify": "^11.2.0",
     "chokidar-cli": "^1.1.0",
     "eslint": "^1.6.0",

@@ -19,7 +19,7 @@
   <div class="wrapper">
     <canvas id="stage" width="720" height="405"></canvas>
   </div>
-  <<script type="text/javascript" src="../lib/unvrs.js"></script>
+  <<script type="text/javascript" src="../dist/unvrs.js"></script>
   <script>
     var stage = document.getElementById('stage');
     var context = stage.getContext('2d');
@@ -37,8 +37,9 @@
       context.clearRect(0, 0, 720, 405);
       for (var i = 0; i < particles.length; i++) {
         var particle = particles[i];
+        var data = particle.data();
         particle.tick();
-        drawParticle(particle);
+        drawParticle(data);
       }
       window.requestAnimationFrame(tick);
     }
