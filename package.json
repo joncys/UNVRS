@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "examples": "http-server .",
-    "package": "mkdir -p lib && browserify index.js --standalone unvrs > lib/unvrs.js",
+    "lint": "eslint src/**",
+    "package": "mkdir -p lib && browserify src/index.js --standalone unvrs > lib/unvrs.js",
+    "test": "tape test/**/*.spec.js | faucet",
+    "dev": "chokidar --initial \"src/**/*.js\" \"test/**/*.js\" -c \"npm run lint -s && npm run test -s\"",
     "prepublish": "npm run package"
   },
   "repository": {
@@ -24,6 +27,10 @@
   "homepage": "https://github.com/joncys/unvrs#readme",
   "devDependencies": {
     "browserify": "^11.2.0",
-    "http-server": "^0.8.5"
+    "chokidar-cli": "^1.1.0",
+    "eslint": "^1.6.0",
+    "faucet": "0.0.1",
+    "http-server": "^0.8.5",
+    "tape": "^4.2.1"
   }
 }

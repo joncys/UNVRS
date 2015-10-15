@@ -1,7 +1,5 @@
 module.exports = {
   createParticle: function(x, y) {
-    var x = x;
-    var y = y;
     var radius = Math.random() * 20;
     var velocityX = Math.random() * 14 - 5;
     var velocityY = Math.random() * 14 - 5;
@@ -13,6 +11,6 @@ module.exports = {
     };
     return {
       x: x, y: y, radius: radius, color: color, tick: tick
-    };
+    }
   }
 }
