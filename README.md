@@ -1,12 +1,24 @@
 # unvrs
+A particle engine, I've always wanted to write.
 
-I love particles. I love pseudo random effects that are comprised of particles.
-I always wanted to write my own particle engine. For the lulz. Well, this is it.
+## Setup
 
-## installation
+Install `unvrs` via `npm`:
 
-Available from npm
+    npm install unvrs --save-dev
 
-```npm install unvrs --save```
+The recommended way of consuming `unvrs` is by requiring only specific parts of the api:
 
-It's mostly a name squat as of now.
+    var merge = require('unvrs/functions/merge');
+
+You can also require the whole package:
+
+    var unvrs = require('unvrs');
+
+Or just include it via a script tag:
+
+    <script src="node_modules/dist/unvrs.js"></script>
+
+## Code examples
+
+Code examples are located inside `examples` directory. These feature some of the basic usages of the library.
