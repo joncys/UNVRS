@@ -19,11 +19,11 @@
   <div class="wrapper">
     <canvas id="stage" width="720" height="405"></canvas>
   </div>
-  <<script type="text/javascript" src="../dist/unvrs.js"></script>
+  <script type="text/javascript" src="../dist/unvrs.js"></script>
   <script>
     var stage = document.getElementById('stage');
     var context = stage.getContext('2d');
-    var drawParticle = function(particle) {
+    function drawParticle(context, particle) {
       context.beginPath();
       context.arc(particle.x, particle.y, particle.radius, 0, 2 * Math.PI, false);
       context.fillStyle = particle.color;
@@ -31,15 +31,26 @@
     };
     var particles = [];
     for (var i = 0; i < 50; i++) {
-      particles.push(unvrs.createParticle(360, 203));
+      particles.push(
+        unvrs.functions.merge(
+          { color: '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16) },
+          unvrs.primitives.twoDimensional(360, 203),
+          unvrs.primitives.circular(Math.random() * 5),
+          unvrs.primitives.velocity2d(
+            Math.random() * 10 - 5,
+            Math.random() * 10 - 5
+          ),
+          unvrs.primitives.gravity2d(0.2)
+        )
+      );
     }
     var tick = function() {
       context.clearRect(0, 0, 720, 405);
+      var step = unvrs.functions.step;
       for (var i = 0; i < particles.length; i++) {
         var particle = particles[i];
-        var data = particle.data();
-        particle.tick();
-        drawParticle(data);
+        step(particle);
+        drawParticle(context, particle);
       }
       window.requestAnimationFrame(tick);
     }
